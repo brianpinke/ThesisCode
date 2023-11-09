@@ -14,7 +14,7 @@ import os
 #os.chdir('C:\\Users\\pinkeb\\OneDrive - Western Washington University\\Thesis\\ThesisCode')
 os.chdir('/Users/bpinke/Library/CloudStorage/OneDrive-WesternWashingtonUniversity/Thesis/ThesisCode')
 
-path=os.path.join( os.getcwd(), 'fieldbook_data_2023_USE.xlsx')
+path=os.path.join( os.getcwd(), 'Data/fieldbook_data_2023_USE.xlsx')
 # loads in SHRS data text files: (1) metadata (2) lithology (3) medians
 field_data = pd.read_excel (
         path, 
@@ -23,7 +23,7 @@ field_data = pd.read_excel (
 
 #gsd_data = field_data.copy()
 
-path=os.path.join( os.getcwd(), 'SuiattleFieldData_Combined20182019.xlsx')
+path=os.path.join( os.getcwd(), 'Data/SuiattleFieldData_Combined20182019.xlsx')
 # loads in SHRS data text files: (1) metadata (2) lithology (3) medians
 suiattleGSD_data = pd.read_excel (
         path, 

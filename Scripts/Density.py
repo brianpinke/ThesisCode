@@ -15,7 +15,7 @@ import os
 #os.chdir('C:\\Users\\pinkeb\\OneDrive - Western Washington University\\Thesis\\ThesisCode')
 os.chdir('/Users/bpinke/Library/CloudStorage/OneDrive-WesternWashingtonUniversity/Thesis/ThesisCode')
 
-path=os.path.join( os.getcwd(), 'Densitydata.xlsx')
+path=os.path.join( os.getcwd(), 'Data/Densitydata.xlsx')
 # loads in SHRS data text files: (1) metadata (2) lithology (3) medians
 data_2023 = pd.read_excel (
         path, 
@@ -25,7 +25,7 @@ data_2023 = pd.read_excel (
 data1=data_2023.loc[data_2023['Method']==1].copy()
 data1=data1[['Lith', 'SHRS median','Density (kg/m3)']].copy()
 
-path=os.path.join( os.getcwd(), 'SHRS_Abrasion_Data.xlsx')
+path=os.path.join( os.getcwd(), 'Data/SHRS_Abrasion_Data.xlsx')
 # loads in SHRS data text files: (1) metadata (2) lithology (3) medians
 suiattle_data = pd.read_excel (
         path, 
