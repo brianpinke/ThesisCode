@@ -9,6 +9,7 @@ Created on Wed Nov  1 20:44:04 2023
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+import seaborn as sns
 import os
 
 #os.chdir('C:\\Users\\pinkeb\\OneDrive - Western Washington University\\Thesis\\ThesisCode')
@@ -35,6 +36,8 @@ suiattleGSD_data=suiattleGSD_data.rename(columns={"Stop Number": "Stop ID"})
 suiattleGSD_data['Stop ID'] = suiattleGSD_data['Stop ID'].astype("string")
 
 gsd_data= pd.concat([field_data,suiattleGSD_data],axis=0)
+
+
 #%%
     
 def process_size(x):
@@ -100,7 +103,43 @@ def add_combine_exposures(data,exposures,deposit_name):
     
     return data 
    
+
+def run_violin_by_plot(gsd_data,by,exposures,colors,title=None, xlabel=None):
+    """
+    returns a violin plot of the gsd for a given set of exposures.
+    """
+
+ 
+    if by =="Stop ID":
+        xlabel="Exposure"
+    if by =='Lithology Category':
+        xlabel="Lithology"
+
+    grain_data = gsd_data.drop(gsd_data[gsd_data['Size (cm)'] == 'F'].index)
+    grain_data = grain_data.drop(grain_data[grain_data['Size (cm)'] == '0'].index)
+    grain_data = grain_data[grain_data['Size (cm)'].notna()]
+    grain_data[["Size (cm)"]] = grain_data[["Size (cm)"]].apply(pd.to_numeric)/100
+    print(grain_data)
+                               
+        
+    data= grain_data.loc[grain_data[by].isin(exposures)]
     
+    sns.violinplot(data=data,x=by,y='Size (cm)', saturation=1, palette=colors).set(title=title, xlabel=xlabel, ylabel='Grain Size (m)')
+    plt.yscale('log')
+    plt.show()
+    
+    
+def get_DX(exposure, percentile=50):
+    
+    dx = gsd_data.loc[gsd_data['Stop ID']==exposure]["Size (cm)"]
+    dx = process_size(dx)
+    dx = np.percentile(dx, percentile)
+    
+    print("The D",percentile,"of", exposure, "is", np.median(dx), "m")
+
+    
+    
+  #%%  
    
     
 #Set all extra shrs measurements to nan
@@ -204,13 +243,61 @@ run_grain_size_plot(gsd_data,exposures=['T4', 'T8', 'T5A','T5B', 'T6','T7','Taho
                     line_types=['dashed','dashed','dashed','dashed','dashed','dashed','solid','solid']
                     ,title='Tahoma Scarps vs Hummocks GSD')
 
+
+# plot proximal, medial, distal for kautz data
+
+gsd_data= add_combine_exposures(gsd_data, exposures=['KC1'],
+                                deposit_name='Proximal')
+
+gsd_data= add_combine_exposures(gsd_data, exposures=['KC2','KC3','KC4'],
+                                deposit_name='Medial')
+
+gsd_data= add_combine_exposures(gsd_data, exposures=['KC5','KC6','KC7'],
+                                deposit_name='Distal')
+
+run_grain_size_plot(gsd_data,exposures=['KC1','KC2','KC3','KC4','KC5','KC6','KC7',"Proximal",'Medial','Distal'],
+                    colors =['blue','red','red','red','green','green','green','blue','red','green'],
+                    line_types=['dashed','dashed','dashed','dashed','dashed','dashed','dashed','solid','solid','solid']
+                    ,title='Kautz Creek GSD by Distance')
+
+# plot Mt. Adams data by Salt Creek Valley outer west, inner west, inner east, outer east
+
+gsd_data= add_combine_exposures(gsd_data, exposures=['MA1','MA1B'],
+                                deposit_name='Outer West')
+
+gsd_data= add_combine_exposures(gsd_data, exposures=['MA2','MA2B'],
+                                deposit_name='Inner West')
+
+gsd_data= add_combine_exposures(gsd_data, exposures=['MA3','MA3B'],
+                                deposit_name='Inner East')
+
+gsd_data= add_combine_exposures(gsd_data, exposures=['MA4','MA4A'],
+                                deposit_name='Outer East')
+
+run_grain_size_plot(gsd_data,exposures=['MA1','MA1B','MA2','MA2B','MA3','MA3B','MA4','MA4A','Outer West','Inner West','Inner East','Outer East'],
+                    colors =['blue','blue','red','red', 'green', 'green', 'orange', 'orange', 'blue','red','green','orange'],
+                    line_types=['dashed','dashed','dashed','dashed','dashed','dashed','dashed','dashed','solid','solid','solid','solid']
+                    ,title='Mt. Adams GSD by Salt Creek Valley')
+
+#%%
+#plot gsd by violin plots
+
+
+
+run_violin_by_plot(gsd_data,by="Stop ID", exposures=['Kautz','Tahoma','Mt. Adams','Mt. Meager','Suiattle'],
+                    colors =['blue','purple','red','orange','green'],
+                    title='All Deposits GSD')
+
+
+#%%
+# grab D50 of the exposures
+get_DX("Kautz",95)
+get_DX("Tahoma")
+get_DX("Mt. Meager")
+get_DX("Mt. Adams")
+get_DX("Suiattle")
+
+
 print('DONE!!!!')
 
-
-print('Kautz D50 is ', np.median(process_size(gsd_data.loc[gsd_data['Stop ID']=="Kautz"]['Size (cm)'])), 'm')
-
-
-
-
-    
 
