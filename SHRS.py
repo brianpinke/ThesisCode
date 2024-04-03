@@ -18,9 +18,6 @@ from scikit_posthocs import posthoc_dunn
 import statsmodels.api as sm 
 from statsmodels.formula.api import ols 
 
-#os.chdir('C:\\Users\\pinkeb\\OneDrive - Western Washington University\\Thesis\\ThesisCode')
-os.chdir('/Users/bpinke/Library/CloudStorage/OneDrive-WesternWashingtonUniversity/Thesis/ThesisCode')
-
 # load in 2023 field data
 path=os.path.join( os.getcwd(), 'Data/fieldbook_data_2023_USE.xlsx')
 

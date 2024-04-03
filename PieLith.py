@@ -14,9 +14,6 @@ import seaborn as sns
 from collections import Counter
 import os
 
-
-os.chdir('/Users/bpinke/Library/CloudStorage/OneDrive-WesternWashingtonUniversity/Thesis/ThesisCode')
-
 # load in 2023 field data
 path=os.path.join( os.getcwd(), 'Data/fieldbook_data_2023_USE.xlsx')
 

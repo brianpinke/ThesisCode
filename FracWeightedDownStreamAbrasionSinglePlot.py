@@ -16,8 +16,6 @@ import pandas as pd
 import os
 
 # %% Read in the source material SHRS data  and fix up data to work in script
-#os.chdir('C:\\Users\\pinkeb\\OneDrive - Western Washington University\\Thesis\\ThesisCode')
-os.chdir('/Users/bpinke/Library/CloudStorage/OneDrive-WesternWashingtonUniversity/Thesis/ThesisCode')
 
 path=os.path.join( os.getcwd(), 'Data/SuiattleFieldData_Combined20182019.xlsx')
 # loads in Suiattle data text files: (1) metadata (2) lithology (3) medians

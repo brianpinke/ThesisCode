@@ -13,8 +13,6 @@ import numpy as np
 import pandas as pd
 import os
 
-#os.chdir('C:\\Users\\pinkeb\\OneDrive - Western Washington University\\Thesis\\ThesisCode')
-os.chdir('/Users/bpinke/Library/CloudStorage/OneDrive-WesternWashingtonUniversity/Thesis/ThesisCode')
 
 # load in 2023 density and abrasion data
 path=os.path.join( os.getcwd(), 'Data/PinkeTumbling2023_USE.xlsx')
