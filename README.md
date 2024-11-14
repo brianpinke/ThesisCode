@@ -1,6 +1,6 @@
-## Vesicularity and Hydrothermal Alteration in Volcanic-Derived Mass Wasting Deposits and the Implications for Downstream Sediment Pulse Attenuation
+# Vesicularity and Hydrothermal Alteration in Volcanic-Derived Mass Wasting Deposits and the Implications for Downstream Sediment Pulse Attenuation
 
-# Scripts by Brian Pinke for M.S. Thesis in Geology at Western Washington University 2024
+## Scripts by Brian Pinke for M.S. Thesis in Geology at Western Washington University 2024
 
 This repository is for a Brian Pinke's M.S. Thesis research project with Dr. Allison Pfeiffer at Western Washington University, focused on understanding the rock clast size, strength, and abrasion potential in 5 different volcanic mass wasting deposits in the Pacific Northwest. 
 
