@@ -6,6 +6,7 @@ This repository is for a Brian Pinke's M.S. Thesis research project with Dr. All
 
 # Contents
 This repository includes the data and scripts required to create the figures in Brian Pinke's M.S. Thesis 
+
 Scripts:
 1. AbrasionSedTransportFig.py : Figure 12: Modeled abrasion of the five study deposits sediment over 100 km of downstream transport. 
 2. DensityFig.py : Figure 11: (A) Density of each deposit as random sampled per exposure, (B) Density of each deposit weighted by lithology fraction.
