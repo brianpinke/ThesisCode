@@ -29,6 +29,6 @@ Scripts:
 8. SHRSvsAbrDensFig.py : Figure 10. (A) SHRS vs. abrasion rate, (B) SHRS vs. Density.
 9. SHRSvsSizeFig.py : Figure 13: Sample clast size vs. Strength colored by lithology.
 
-* Gouidie 2006: The Schmidt Hammer in Geomorphological Research.
+*Gouidie 2006: The Schmidt Hammer in Geomorphological Research.
 
 **Pfeiffer et al. 2022: Survival of the Strong and the Dense: Field Evidence for Rapid, Transport-Dependent Bed Material Abrasion of Heterogeneous Source Lithology.
